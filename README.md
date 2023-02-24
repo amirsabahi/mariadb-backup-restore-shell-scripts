@@ -21,3 +21,14 @@ This script is used to restore a MariaDB database that was backed up using the M
 
 ## remove_old_backups.sh
 This script is used to ask the user whether to remove old backup files. The user can use -d or -h to set the number of days or hours, respectively.
+
+## backup_mariadb_incremental.sh
+This script reads the username and password from an encrypted file and creates an incremental backup using the MariaDB Backup tool.
+
+To use this script, you must first create an encrypted credentials file using the create_secure_credentials.sh script. The script will prompt you for the path and filename of the encrypted file.
+
+The backup is stored in a directory specified by the backup_dir variable, and the filename includes the date and time. The script also creates a symlink named latest that points to the most recent backup directory.
+
+To create an incremental backup, the script uses the mariabackup command, passing in the username, password, and the directories for the backup and the incremental base.
+
+
