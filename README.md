@@ -31,4 +31,7 @@ The backup is stored in a directory specified by the backup_dir variable, and th
 
 To create an incremental backup, the script uses the mariabackup command, passing in the username, password, and the directories for the backup and the incremental base.
 
+##mysql_backup.sh
+To use this script, save it to a file (e.g., backup_mysql.sh) and make it executable (chmod +x backup_mysql.sh). Then, run the script and follow the prompts to enter the database credentials, backup file name, and backup destination directory. To compress the backup file, add the -c flag when running the script. For example: ./backup_mysql.sh -c
+
 
