@@ -31,7 +31,36 @@ The backup is stored in a directory specified by the backup_dir variable, and th
 
 To create an incremental backup, the script uses the mariabackup command, passing in the username, password, and the directories for the backup and the incremental base.
 
-##mysql_backup.sh
+## mysql_backup.sh
 To use this script, save it to a file (e.g., backup_mysql.sh) and make it executable (chmod +x backup_mysql.sh). Then, run the script and follow the prompts to enter the database credentials, backup file name, and backup destination directory. To compress the backup file, add the -c flag when running the script. For example: ./backup_mysql.sh -c
+
+## Shell script to import a SQL file into MySQL
+This shell script reads a SQL file and imports it into a MySQL database. The user can specify the location of the SQL file, the database credentials, and the MySQL server information. The script can read the SQL file from a remote server or a local directory.
+
+Prerequisites
+To use this script, you need the following:
+
+MySQL client installed on the system where the script will run
+SSH access to the remote server (if the SQL file is on a remote server)
+Usage
+Save the script to a file (e.g., import_sql.sh) and make it executable (chmod +x import_sql.sh).
+
+Run the script: ./import_sql.sh
+
+Enter the SQL file location when prompted. This can be a local file path or a remote server file path in the format username@ip:/path/to/file.sql.
+
+If the SQL file is on a remote server, enter the SSH username, remote server IP address, and remote file path when prompted.
+
+Enter the database credentials when prompted. This includes the database username, password, and name.
+
+Enter the MySQL server IP address when prompted.
+
+The script will download the SQL file (if it's on a remote server), prompt for the database password (using the -s flag to hide the password), and import the SQL file into the specified MySQL database.
+
+Notes
+If the SQL file is on a local directory, make sure to enter the full file path, including the file name and extension (e.g., /path/to/sql_file.sql).
+The script assumes that the MySQL server is running on the default port (3306). If your MySQL server is running on a different port, you'll need to specify it using the -P flag in the mysql command.
+
+
 
 
