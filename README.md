@@ -61,6 +61,37 @@ Notes
 If the SQL file is on a local directory, make sure to enter the full file path, including the file name and extension (e.g., /path/to/sql_file.sql).
 The script assumes that the MySQL server is running on the default port (3306). If your MySQL server is running on a different port, you'll need to specify it using the -P flag in the mysql command.
 
+## Advance MySQL backup script
+backup_database.sh - A shell script to retrieve a list of databases and allow the user to choose which database to backup.
+
+Usage
+./backup_database.sh [options]
+Options
+-a: Backup all databases.
+-d: Backup a specific database. You will be prompted to choose the database.
+-u: Specify the username to use when connecting to MySQL. Default is root.
+-p: Specify the password to use when connecting to MySQL. Default is empty.
+Description
+This shell script uses the mysql command to retrieve a list of databases and prompt the user to choose which database to backup. The backup is created using the mysqldump command.
+
+When run without any options, the script will prompt the user to choose whether to backup all databases or a specific database. If the user chooses to backup a specific database, a list of databases will be displayed and the user will be prompted to choose one.
+
+The backup is created using the mysqldump command with the --opt and --add-drop-database options. By default, the backup will be saved in the current working directory with a filename of database_name_backup.sql.
+
+The user can also specify the username and password to use when connecting to MySQL. If no username is specified, the default username of root is used. If no password is specified, an empty password is used.
+
+Examples
+Backup a specific database:
+
+./backup_database.sh -d my_database
+Backup all databases:
+
+./backup_database.sh -a
+Backup a specific database with a custom filename and compress the output:
+
+./backup_database.sh -d my_database -f my_backup.sql -c
+Notes
+The user running the script must have permission to create files in the current working directory.
 
 
 
