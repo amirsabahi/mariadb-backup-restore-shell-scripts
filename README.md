@@ -100,3 +100,5 @@ After prompting the user to make a choice, the script uses a case statement to d
 
 Overall, this script is a helpful tool for quickly installing and configuring a database. The use of color-coded output messages and clear instructions make it easy to follow, even for those who are not familiar with the installation process.
 
+## ./security-check.sh
+Check the installed database for any scurity issue.
