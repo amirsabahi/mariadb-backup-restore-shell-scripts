@@ -93,5 +93,10 @@ Backup a specific database with a custom filename and compress the output:
 Notes
 The user running the script must have permission to create files in the current working directory.
 
+## ./install-db.sh
+The shell script provided is designed to allow the user to choose between installing MariaDB, PostgreSQL, or MySQL. The script includes color-coded output messages to make it easier to read and follow.
 
+After prompting the user to make a choice, the script uses a case statement to determine which database to install. Once the database is installed, the script prompts the user with instructions on how to configure and access the database. The instructions include the appropriate commands to run and a suggestion to run the man page for more detailed help.
+
+Overall, this script is a helpful tool for quickly installing and configuring a database. The use of color-coded output messages and clear instructions make it easy to follow, even for those who are not familiar with the installation process.
 
