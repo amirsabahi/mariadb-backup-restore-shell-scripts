@@ -30,9 +30,9 @@ BACKUP_FILE="$BACKUP_DIR/$(date +%Y-%m-%d_%H-%M-%S).tar.gz"
 
 # Generate the backup and compress it
 echo "Starting backup..."
-mariabackup --user=$DB_USER --password=$DB_PASSWORD --databases $DB_NAME --target-dir=$BACKUP_DIR --backup
-tar czf $BACKUP_FILE $BACKUP_DIR/$(basename $BACKUP_DIR)
-rm -rf $BACKUP_DIR/$(basename $BACKUP_DIR)
+mariabackup --user=$DB_USER --password=$DB_PASSWORD --databases $DB_NAME --target-dir=$BACKUP_DIR --backup --stream=xbstream | gzip | openssl  enc -aes-256-cbc -k STRONG_PASS > backup.xb.gz.enc
+# tar czf $BACKUP_FILE $BACKUP_DIR/$(basename $BACKUP_DIR)
+# rm -rf $BACKUP_DIR/$(basename $BACKUP_DIR)
 
 # Check if the backup location exists, if not create it
 if [ ! -d "$BACKUP_LOCATION" ]; then
